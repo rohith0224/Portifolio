@@ -1,4 +1,4 @@
-import React from "react";
+
 import type { MouseEvent } from "react";
 import { projectData } from "../data/portfolioData";
 
