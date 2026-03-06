@@ -1,0 +1,798 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;600;700&family=Orbitron:wght@500;700&display=swap");
+
+:root{
+  --bg: #06070b;
+  --ink: rgba(255,255,255,.92);
+  --muted: rgba(255,255,255,.70);
+
+  /* DEFAULT = Iron */
+  --primary: #ff2a2a;
+  --accent: #4cf6ff;
+  --accent2: #ffcc55;
+
+  --panel: rgba(12, 14, 20, .65);
+  --stroke: rgba(255,255,255,.14);
+  --shadow: 0 22px 72px rgba(0,0,0,.60);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background: var(--bg);
+  color: var(--ink);
+  overflow-x:hidden;
+  font-family: Rajdhani, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+}
+a{color:inherit}
+button{font:inherit}
+
+/* ---------------- Suit Themes ---------------- */
+.theme-iron{
+  --primary: #ff2a2a;
+  --accent: #4cf6ff;
+  --accent2: #ffcc55;
+}
+.theme-captain{
+  --primary: #2f6bff;   /* shield blue */
+  --accent: #ff2a2a;    /* red */
+  --accent2: #ffffff;   /* white */
+}
+.theme-spider{
+  --primary: #ff2a2a;   /* spidey red */
+  --accent: #2a7cff;    /* spidey blue */
+  --accent2: #ffffff;   /* web white */
+}
+
+/* ---------------- 2s Intro Loader ---------------- */
+.intro{
+  position:fixed; inset:0;
+  z-index:9999;
+  background: #05060a;
+  display:grid;
+  place-items:center;
+  overflow:hidden;
+}
+.introPanels{
+  position:absolute; inset:0;
+  display:grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  padding: 16px;
+}
+.introPanels > div{
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,.10);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  box-shadow: 0 22px 72px rgba(0,0,0,.55);
+  transform: translateY(120%);
+  animation: panelIn 700ms cubic-bezier(.2,.9,.2,1) forwards;
+}
+.introPanels .p1{animation-delay: 0ms}
+.introPanels .p2{animation-delay: 80ms}
+.introPanels .p3{animation-delay: 160ms}
+.introPanels .p4{animation-delay: 240ms}
+
+@keyframes panelIn{
+  to{transform: translateY(0%)}
+}
+
+/* a quick “wipe out” near the end */
+.introPanels > div{
+  animation-name: panelIn, panelOut;
+  animation-duration: 7000ms, 5200ms;
+  animation-delay: var(--d, 0ms), 1500ms;
+  animation-timing-function: cubic-bezier(.2,.9,.2,1), cubic-bezier(.7,0,.2,1);
+  animation-fill-mode: forwards, forwards;
+}
+.introPanels .p1{--d:0ms}
+.introPanels .p2{--d:80ms}
+.introPanels .p3{--d:160ms}
+.introPanels .p4{--d:240ms}
+
+@keyframes panelOut{
+  to{transform: translateY(-120%); opacity:.0}
+}
+
+.introCenter{
+  position:relative;
+  text-align:center;
+  z-index:1;
+  transform: translateY(6px);
+  animation: introPop 900ms ease forwards;
+}
+@keyframes introPop{
+  0%{opacity:0; transform: translateY(14px) scale(.98)}
+  55%{opacity:1; transform: translateY(0) scale(1)}
+  100%{opacity:1}
+}
+.introWord{
+  font-family: Bebas Neue, system-ui;
+  font-size: clamp(3.2rem, 8vw, 5.4rem);
+  letter-spacing: .28em;
+  color: var(--primary);
+  text-shadow: 0 0 18px color-mix(in srgb, var(--primary) 55%, transparent);
+}
+.introSub{
+  margin-top: 6px;
+  font-family: Orbitron, system-ui;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.75);
+}
+
+/* ---------------- Layout / Typography ---------------- */
+.mvWrap{width:min(1120px, calc(100% - 40px)); margin: 0 auto}
+.mvMain{padding-top: 92px}
+.mvSec{padding: 86px 0}
+
+.mvH2{
+  margin:0 0 10px;
+  font-family: Orbitron, Rajdhani, system-ui;
+  letter-spacing:.08em;
+  text-transform: uppercase;
+  font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+}
+.mvH3{
+  margin:0;
+  font-family: Orbitron, Rajdhani, system-ui;
+  letter-spacing:.06em;
+  text-transform: uppercase;
+  font-size: 1.05rem;
+}
+.mvP{color: var(--muted); line-height: 1.7; font-size: 1.05rem}
+.mvMuted{color: var(--muted)}
+.mvSmall{font-size:.95rem}
+
+/* ---------------- Background ---------------- */
+.mvBg{position:fixed; inset:0; z-index:-1; overflow:hidden}
+.mvStars{
+  position:absolute; inset:0;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(255,255,255,.10), transparent 45%),
+    radial-gradient(circle at 80% 30%, rgba(255,255,255,.08), transparent 40%),
+    radial-gradient(circle at 55% 75%, rgba(255,255,255,.06), transparent 45%),
+    linear-gradient(180deg, rgba(0,0,0,.0), rgba(0,0,0,.45));
+  opacity:.9;
+}
+.mvHalftone{
+  position:absolute; inset:-30%;
+  background-image: radial-gradient(rgba(255,255,255,.10) 1px, transparent 1px);
+  background-size: 10px 10px;
+  opacity:.10;
+  transform: rotate(-12deg);
+}
+.mvSweep{
+  position:absolute; inset:-30%;
+  background:
+    radial-gradient(circle at 20% 25%, color-mix(in srgb, var(--primary) 18%, transparent), transparent 55%),
+    radial-gradient(circle at 70% 40%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 55%),
+    radial-gradient(circle at 60% 85%, color-mix(in srgb, var(--accent2) 10%, transparent), transparent 60%);
+  filter: blur(18px);
+}
+.mvNoise{
+  position:absolute; inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+  opacity:.06;
+  mix-blend-mode: overlay;
+}
+.mvHud{
+  position:absolute; inset:0;
+  display:grid; place-items:center;
+  pointer-events:none;
+  opacity:.18;
+}
+.ring{
+  position:absolute;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  box-shadow: 0 0 40px color-mix(in srgb, var(--accent) 10%, transparent);
+}
+.r1{width: 820px; height: 820px; animation: spin 18s linear infinite}
+.r2{width: 560px; height: 560px; border-color: color-mix(in srgb, var(--primary) 28%, transparent); animation: spin 26s linear infinite reverse}
+.r3{width: 360px; height: 360px; border-color: color-mix(in srgb, var(--accent2) 22%, transparent); animation: spin 34s linear infinite}
+@keyframes spin{to{transform: rotate(360deg)}}
+
+/* ---------------- Top nav ---------------- */
+.mvTop{
+  position:fixed; top:0; left:0; right:0;
+  height: 78px;
+  z-index:10;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding: 0 20px;
+  backdrop-filter: blur(10px);
+  background: linear-gradient(to bottom, rgba(6,7,11,.88), rgba(6,7,11,.35));
+  border-bottom: 1px solid rgba(255,255,255,.10);
+  gap: 14px;
+}
+.mvBrand{
+  display:flex; align-items:center; gap:10px;
+  background:transparent; border:0; color: var(--ink);
+  cursor:pointer;
+}
+.mvBadge{
+  font-family: Orbitron, system-ui;
+  padding: 8px 10px;
+  border-radius: 12px;
+  border: 1px solid color-mix(in srgb, var(--primary) 45%, transparent);
+  background: color-mix(in srgb, var(--primary) 10%, transparent);
+  color: color-mix(in srgb, var(--primary) 95%, white 0%);
+  box-shadow: 0 0 22px color-mix(in srgb, var(--primary) 18%, transparent);
+}
+.mvBrandText{
+  font-family: Orbitron, system-ui;
+  letter-spacing:.06em;
+  color: rgba(255,255,255,.78);
+  text-transform: uppercase;
+  font-size:.95rem;
+}
+.mvNav{display:flex; gap:8px}
+.mvNavBtn{
+  font-family: Orbitron, system-ui;
+  font-size: .85rem;
+  letter-spacing:.06em;
+  text-transform: uppercase;
+  padding: 9px 11px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: rgba(255,255,255,.74);
+  cursor:pointer;
+  transition: .18s ease;
+}
+.mvNavBtn:hover{border-color: rgba(255,255,255,.12); background: rgba(255,255,255,.04); color: var(--ink)}
+.mvNavBtn.active{
+  border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+  background: color-mix(in srgb, var(--accent) 8%, transparent);
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 10%, transparent);
+  color: var(--ink);
+}
+@media (max-width: 980px){
+  .mvNav{display:none}
+}
+
+/* Suit Toggle + CTAs */
+.suitWrap{display:flex; align-items:center; gap:12px; flex-wrap:wrap; justify-content:flex-end}
+.suitLabel{
+  font-family: Orbitron, system-ui;
+  letter-spacing:.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.70);
+  font-size:.82rem;
+}
+.suitToggle{
+  display:flex;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.04);
+  overflow:hidden;
+}
+.suitBtn{
+  padding: 9px 10px;
+  border: 0;
+  background: transparent;
+  color: rgba(255,255,255,.72);
+  cursor:pointer;
+  font-family: Orbitron, system-ui;
+  letter-spacing:.06em;
+  text-transform: uppercase;
+  font-size: .78rem;
+  transition: .18s ease;
+}
+.suitBtn:hover{background: rgba(255,255,255,.06); color: rgba(255,255,255,.86)}
+.suitBtn.active{
+  background: color-mix(in srgb, var(--primary) 14%, transparent);
+  color: rgba(255,255,255,.92);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--primary) 45%, transparent);
+}
+
+.mvCtas{display:flex; gap:10px}
+
+/* Buttons */
+.mvBtn{
+  padding: 10px 14px;
+  border-radius: 14px;
+  border: 1px solid color-mix(in srgb, var(--primary) 55%, transparent);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--primary) 22%, transparent), color-mix(in srgb, var(--primary) 10%, transparent));
+  color: var(--ink);
+  cursor:pointer;
+  text-decoration:none;
+  font-family: Orbitron, system-ui;
+  letter-spacing:.06em;
+  text-transform: uppercase;
+  box-shadow: 0 18px 48px rgba(0,0,0,.35), 0 0 26px color-mix(in srgb, var(--primary) 16%, transparent);
+  transition: .18s ease;
+}
+.mvBtn:hover{transform: translateY(-1px); box-shadow: 0 22px 66px rgba(0,0,0,.45), 0 0 36px color-mix(in srgb, var(--primary) 22%, transparent)}
+.mvBtn:active{transform: translateY(0px)}
+.mvBtn.ghost{
+  border-color: rgba(255,255,255,.18);
+  background: rgba(255,255,255,.04);
+  box-shadow:none;
+}
+
+/* ---------------- Hero ---------------- */
+.mvHero{padding-top: 18px}
+.mvHeroGrid{display:grid; grid-template-columns: 1.05fr .95fr; gap: 22px; align-items:center}
+@media (max-width: 980px){
+  .mvHeroGrid{grid-template-columns:1fr}
+}
+.mvKicker{
+  display:inline-flex; align-items:center; gap:10px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(0,0,0,.22);
+  color: rgba(255,255,255,.78);
+  font-family: Orbitron, system-ui;
+  letter-spacing:.06em;
+  text-transform: uppercase;
+  font-size:.85rem;
+}
+.dot{
+  width:10px; height:10px; border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 95%, white 0%);
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 12%, transparent);
+  animation: blink 1.5s ease-in-out infinite;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.65}}
+
+.mvTitle{margin: 12px 0 10px}
+.mvTitleTop{
+  display:block;
+  font-family: Bebas Neue, Rajdhani, system-ui;
+  letter-spacing:.22em;
+  color: rgba(255,255,255,.78);
+}
+.mvTitleBig{
+  display:block;
+  font-family: Bebas Neue, Rajdhani, system-ui;
+  font-size: clamp(2.8rem, 5.6vw, 4.6rem);
+  letter-spacing:.18em;
+  line-height: .92;
+  color: var(--primary);
+  text-shadow:
+    0 0 16px color-mix(in srgb, var(--primary) 45%, transparent),
+    0 10px 50px color-mix(in srgb, var(--primary) 18%, transparent);
+  text-transform: uppercase;
+}
+.mvLead{
+  margin: 8px 0 0;
+  color: rgba(255,255,255,.74);
+  font-size: 1.12rem;
+  line-height: 1.55;
+}
+
+.mvStats{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 10px;
+  margin-top: 16px;
+}
+@media (max-width: 720px){
+  .mvStats{grid-template-columns:1fr}
+}
+.mvStat{
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(0,0,0,.22);
+  padding: 12px;
+}
+.mvStat .k{
+  font-family: Orbitron, system-ui;
+  color: rgba(255,255,255,.62);
+  font-size:.85rem;
+  letter-spacing:.06em;
+  text-transform: uppercase;
+}
+.mvStat .v{margin-top: 4px; color: rgba(255,255,255,.86); font-size: 1.02rem}
+
+.mvHeroBtns{display:flex; gap:10px; flex-wrap:wrap; margin-top: 16px}
+
+/* ---------------- Arc Reactor Panel ---------------- */
+.arcPanel{
+  border-radius: 22px;
+  border: 1px solid color-mix(in srgb, var(--accent) 26%, transparent);
+  background: linear-gradient(180deg, rgba(0,0,0,.42), rgba(0,0,0,.18));
+  box-shadow: var(--shadow);
+  overflow:hidden;
+  position:relative;
+}
+.arcPanel::before{
+  content:"";
+  position:absolute; inset:-40%;
+  background:
+    radial-gradient(circle at 30% 20%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 55%),
+    radial-gradient(circle at 70% 70%, color-mix(in srgb, var(--primary) 12%, transparent), transparent 60%);
+  filter: blur(22px);
+  pointer-events:none;
+}
+.arcHead{
+  padding: 14px;
+  border-bottom: 1px solid rgba(255,255,255,.10);
+  display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
+}
+.arcTag{
+  font-family: Orbitron, system-ui;
+  letter-spacing:.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.75);
+  font-size:.9rem;
+}
+.arcSub{color: rgba(255,255,255,.78)}
+.arcCore{
+  padding: 18px 14px 6px;
+  display:grid;
+  place-items:center;
+  position:relative;
+}
+.arcCore.pulse .arcGlow{opacity: .95; transform: scale(1.02)}
+.arcGlow{
+  position:absolute;
+  width: 260px; height: 260px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 50% 50%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 60%);
+  filter: blur(12px);
+  opacity:.72;
+  transition: .35s ease;
+}
+.arcRing{
+  position:absolute;
+  width: 210px; height: 210px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  box-shadow: 0 0 24px color-mix(in srgb, var(--accent) 10%, transparent);
+  animation: spin 12s linear infinite;
+}
+.arcRing.ring2{width: 160px; height: 160px; border-color: color-mix(in srgb, var(--accent2) 22%, transparent); animation-duration: 18s; animation-direction: reverse}
+.arcRing.ring3{width: 120px; height: 120px; border-color: color-mix(in srgb, var(--primary) 22%, transparent); animation-duration: 22s}
+.arcCenter{
+  width: 92px; height: 92px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.16);
+  background: rgba(8,10,16,.60);
+  display:grid;
+  place-items:center;
+  text-align:center;
+  z-index:1;
+}
+.arcNum{
+  font-family: Orbitron, system-ui;
+  letter-spacing:.04em;
+  color: color-mix(in srgb, var(--accent) 92%, white 0%);
+  text-shadow: 0 0 18px color-mix(in srgb, var(--accent) 35%, transparent);
+  font-size: 1.05rem;
+}
+.arcTxt{color: rgba(255,255,255,.70); font-size:.9rem}
+
+.arcReadouts{
+  padding: 8px 14px 14px;
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 10px;
+}
+@media (max-width: 720px){
+  .arcReadouts{grid-template-columns:1fr}
+}
+.read{
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(0,0,0,.22);
+  padding: 12px;
+}
+.rk{
+  font-family: Orbitron, system-ui;
+  letter-spacing:.06em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.62);
+  font-size:.82rem;
+}
+.rv{margin-top: 6px; font-size: 1.02rem; color: rgba(255,255,255,.86)}
+.rv.ok{color: color-mix(in srgb, var(--accent) 86%, white 0%)}
+.rv.cyan{color: color-mix(in srgb, var(--accent) 86%, white 0%)}
+
+.arcFoot{
+  padding: 12px 14px;
+  display:flex; justify-content:space-between;
+  border-top: 1px solid rgba(255,255,255,.10);
+  color: rgba(255,255,255,.62);
+  font-family: Orbitron, system-ui;
+  letter-spacing:.05em;
+  text-transform: uppercase;
+  font-size:.85rem;
+}
+.rec{color: color-mix(in srgb, var(--primary) 95%, white 0%); text-shadow: 0 0 18px color-mix(in srgb, var(--primary) 45%, transparent)}
+
+/* ---------------- Two column layout ---------------- */
+.mvTwo{display:grid; grid-template-columns: 1.1fr .9fr; gap: 22px; align-items:start}
+@media (max-width: 980px){
+  .mvTwo{grid-template-columns:1fr}
+}
+.mvChips{display:flex; flex-wrap:wrap; gap:10px; margin-top: 14px}
+.mvChips span{
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.04);
+  color: rgba(255,255,255,.76);
+  font-family: Orbitron, system-ui;
+  letter-spacing:.05em;
+  text-transform: uppercase;
+  font-size:.82rem;
+}
+
+/* Identity card */
+.idCard{
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(0,0,0,.24);
+  box-shadow: var(--shadow);
+  padding: 16px;
+  position:relative;
+  overflow:hidden;
+}
+.idCard::before{
+  content:"";
+  position:absolute; inset:-40%;
+  background: radial-gradient(circle at 30% 20%, color-mix(in srgb, var(--accent2) 14%, transparent), transparent 55%);
+  filter: blur(22px);
+  pointer-events:none;
+}
+.idTop{display:flex; justify-content:space-between; align-items:center}
+.idTitle{
+  font-family: Orbitron, system-ui;
+  letter-spacing:.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.75);
+}
+.idStamp{
+  padding: 7px 10px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--accent2) 30%, transparent);
+  background: color-mix(in srgb, var(--accent2) 10%, transparent);
+  color: color-mix(in srgb, var(--accent2) 92%, white 0%);
+  font-family: Orbitron, system-ui;
+  letter-spacing:.08em;
+  text-transform: uppercase;
+  font-size:.82rem;
+}
+.idRow{
+  display:grid; grid-template-columns: 110px 1fr; gap: 12px;
+  padding: 10px 0;
+  border-top: 1px solid rgba(255,255,255,.10);
+}
+.idRow:first-of-type{border-top:0}
+.idRow .k{color: rgba(255,255,255,.62); font-family: Orbitron, system-ui; letter-spacing:.06em; text-transform: uppercase; font-size:.82rem}
+.idRow .v{color: rgba(255,255,255,.86)}
+.idRow .links{display:flex; gap: 14px}
+.idRow .links a{color: color-mix(in srgb, var(--accent) 80%, white 0%)}
+.idRow .links a:hover{text-decoration: underline}
+.idBeam{
+  position:absolute;
+  right:-80px; top:-60px;
+  width: 220px; height: 220px;
+  background: radial-gradient(circle at 30% 30%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 60%);
+  filter: blur(18px);
+  transform: rotate(18deg);
+}
+
+/* ---------------- Projects + Spotlight ---------------- */
+.mvHead{margin-bottom: 18px}
+.mvCards{
+  display:grid;
+  grid-template-columns: repeat(3, minmax(0,1fr));
+  gap: 14px;
+  margin-top: 18px;
+}
+@media (max-width: 980px){
+  .mvCards{grid-template-columns:1fr}
+}
+.mvCard{
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(0,0,0,.22);
+  box-shadow: 0 16px 55px rgba(0,0,0,.45);
+  padding: 16px;
+  position:relative;
+  overflow:hidden;
+  transition: .18s ease;
+  transform: translateZ(0);
+}
+.mvCard:hover{
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--accent) 22%, transparent);
+  box-shadow: 0 22px 72px rgba(0,0,0,.55), 0 0 30px color-mix(in srgb, var(--accent) 14%, transparent);
+}
+.mvCardGlow{
+  position:absolute; inset:-40%;
+  background:
+    radial-gradient(circle at 20% 10%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 55%),
+    radial-gradient(circle at 70% 70%, color-mix(in srgb, var(--primary) 10%, transparent), transparent 60%);
+  filter: blur(22px);
+  opacity:.0;
+  transition:.18s ease;
+  pointer-events:none;
+}
+.mvCard:hover .mvCardGlow{opacity:1}
+
+.spotlight .spot{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:0;
+  transition: opacity .15s ease;
+  background:
+    radial-gradient(
+      220px circle at var(--mx, 50%) var(--my, 40%),
+      color-mix(in srgb, var(--accent) 22%, transparent),
+      transparent 60%
+    );
+  mix-blend-mode: screen;
+}
+.spotlight:hover .spot{opacity:1}
+
+.mvSub{color: rgba(255,255,255,.72); margin-top: 6px}
+.mvStack{display:flex; flex-wrap:wrap; gap:8px; margin-top: 10px}
+.mvStack span{
+  padding: 6px 9px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.04);
+  font-family: Orbitron, system-ui;
+  letter-spacing:.05em;
+  text-transform: uppercase;
+  font-size:.78rem;
+  color: rgba(255,255,255,.74);
+}
+.mvList{margin: 12px 0 0; padding-left: 1.1rem; color: rgba(255,255,255,.76); line-height: 1.55}
+.mvLinks{display:flex; gap: 14px; margin-top: 12px; font-family: Orbitron, system-ui; letter-spacing:.05em; text-transform: uppercase; font-size:.82rem}
+.mvLinks a{color: color-mix(in srgb, var(--accent) 82%, white 0%)}
+.mvLinks a:hover{text-decoration: underline}
+
+/* ---------------- Skills ---------------- */
+.mvSkillGrid{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 10px;
+  margin-top: 14px;
+}
+@media (max-width: 720px){
+  .mvSkillGrid{grid-template-columns:1fr}
+}
+.mvSkill{
+  display:flex; align-items:center; gap: 10px;
+  padding: 12px;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(0,0,0,.20);
+}
+.mvSkillIcon{
+  width: 10px; height: 10px; border-radius: 999px;
+  background: color-mix(in srgb, var(--primary) 85%, transparent);
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--primary) 10%, transparent);
+}
+.mvSkillText{
+  font-family: Orbitron, system-ui;
+  letter-spacing:.05em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.78);
+  font-size:.9rem;
+}
+
+/* HUD panel */
+.hudPanel{
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(0,0,0,.24);
+  box-shadow: var(--shadow);
+  padding: 16px;
+  overflow:hidden;
+  position:relative;
+}
+.hudPanel::before{
+  content:"";
+  position:absolute; inset:-40%;
+  background: radial-gradient(circle at 60% 20%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 60%);
+  filter: blur(22px);
+  pointer-events:none;
+}
+.hudTitle{
+  font-family: Orbitron, system-ui;
+  letter-spacing:.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.75);
+}
+.hudLines{margin-top: 14px; display:grid; gap: 10px}
+.hudLine{display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px}
+.hudLine span{
+  height: 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.04);
+  overflow:hidden;
+  position:relative;
+}
+.hudLine span::after{
+  content:"";
+  position:absolute; inset:0;
+  width: 45%;
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--accent) 22%, transparent), transparent);
+  transform: translateX(-60%);
+  animation: sweep 2.6s ease-in-out infinite;
+}
+.hudLine:nth-child(2n) span::after{animation-duration: 3.2s}
+@keyframes sweep{
+  0%,100%{transform: translateX(-60%)}
+  50%{transform: translateX(180%)}
+}
+.hudFooter{
+  margin-top: 14px;
+  color: rgba(255,255,255,.66);
+  font-family: Orbitron, system-ui;
+  letter-spacing:.06em;
+  text-transform: uppercase;
+  font-size:.85rem;
+}
+
+/* Contact */
+.mvContact{padding-bottom: 0}
+.mvContactGrid{display:grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items:start}
+@media (max-width: 980px){
+  .mvContactGrid{grid-template-columns:1fr}
+}
+.mvBtns{display:flex; gap:10px; flex-wrap:wrap; margin-top: 14px}
+
+.mvFormCard{
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(0,0,0,.24);
+  box-shadow: var(--shadow);
+  overflow:hidden;
+}
+.mvFormHead{
+  padding: 14px;
+  border-bottom: 1px solid rgba(255,255,255,.10);
+  display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap;
+}
+.mvFormTag{
+  font-family: Orbitron, system-ui;
+  letter-spacing:.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.75);
+}
+.mvForm{padding: 14px; display:grid; gap: 10px}
+label{display:grid; gap: 6px}
+label span{
+  color: rgba(255,255,255,.62);
+  font-family: Orbitron, system-ui;
+  letter-spacing:.06em;
+  text-transform: uppercase;
+  font-size:.82rem;
+}
+input, textarea{
+  width:100%;
+  padding: 11px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(0,0,0,.22);
+  color: var(--ink);
+  outline:none;
+  font-family: Rajdhani, system-ui;
+  font-size: 1rem;
+}
+input:focus, textarea:focus{
+  border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 10%, transparent);
+}
+
+/* Footer */
+.mvFoot{padding: 26px 0 30px}
+.mvFootInner{
+  display:flex; justify-content:space-between; gap: 12px; flex-wrap:wrap;
+  border-top: 1px solid rgba(255,255,255,.10);
+  padding-top: 16px;
+}
