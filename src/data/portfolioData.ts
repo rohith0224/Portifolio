@@ -121,9 +121,9 @@ export const heroData: HeroData = {
     href: "https://www.linkedin.com/in/sunkara-rohith-817288219/",
   },
   stats: [
-    { label: "Power", value: "LLMs • Recs • APIs" },
-    { label: "Suit", value: "React • TypeScript" },
-    { label: "Core", value: "Python • FastAPI" },
+    { label: "AI Systems", value: "LLMs • RAG • Agents" },
+    { label: "Stack", value: "Python · FastAPI · React" },
+    { label: "Frontend", value: "React • TypeScript" },
   ],
 };
 
