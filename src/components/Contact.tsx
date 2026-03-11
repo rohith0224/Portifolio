@@ -12,11 +12,34 @@ export default function Contact() {
           <p><a href={contactData.linkedin} target="_blank" rel="noreferrer">LinkedIn</a></p>
         </div>
 
-        <form className="contact-form">
-          <input type="text" placeholder="Your name" />
-          <input type="email" placeholder="Your email" />
-          <textarea placeholder="Your message" rows={5} />
+        <form
+          className="contact-form"
+          action="https://formspree.io/f/xnjgdzwj"
+          method="POST"
+        >
+          <input
+            type="text"
+            name="name"
+            placeholder="Your name"
+            required
+          />
+
+          <input
+            type="email"
+            name="email"
+            placeholder="Your email"
+            required
+          />
+
+          <textarea
+            name="message"
+            placeholder="Your message"
+            rows={5}
+            required
+          />
+
           <button type="submit">Send</button>
+
           <small>{contactData.formNote}</small>
         </form>
       </div>

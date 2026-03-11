@@ -25,9 +25,9 @@
 
 /* SPIDER MAN THEME */
 .theme-spider {
-  --accent: #ff1744;
-  --accent-soft: rgba(255, 23, 68, 0.2);
-  --accent-strong: #ff5c7a;
+  --accent: #de0606;
+--accent-soft: rgba(222, 6, 6, 0.2);
+--accent-strong: #ac0202;
 }
 
 .app {

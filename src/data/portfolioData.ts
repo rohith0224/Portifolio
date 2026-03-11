@@ -135,7 +135,7 @@ export const aboutData: AboutData = {
     "Alongside AI, I am also skilled in full-stack development, which helps me turn models into production-ready applications with clean user experiences and reliable backend systems.",
     "I am currently pursuing a Master’s in Computer Science at George Washington University and actively building projects aligned with AI Engineer and Machine Learning Engineer roles.",
   ],
-  highlights: ["LLMs", "Machine Learning", "FastAPI", "React", "Generative AI", "AWS"],
+  highlights: [],
 };
 
 export const experienceData: ExperienceItem[] = [

@@ -8,7 +8,7 @@ export default function IntroLoader() {
           <div className="panel" />
         </div>
         <div className="intro-center">
-          <h1>ROHITH</h1>
+          <h1>ROHITH SUNKARA</h1>
           <p>PORTFOLIO</p>
         </div>
       </div>
