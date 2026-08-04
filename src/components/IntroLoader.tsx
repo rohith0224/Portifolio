@@ -1,16 +1,10 @@
 export default function IntroLoader() {
-    return (
-      <div className="intro">
-        <div className="intro-panels">
-          <div className="panel" />
-          <div className="panel" />
-          <div className="panel" />
-          <div className="panel" />
-        </div>
-        <div className="intro-center">
-          <h1>ROHITH SUNKARA</h1>
-          <p>PORTFOLIO</p>
-        </div>
+  return (
+    <div className="intro">
+      <div className="intro-center">
+        <h1>Rohith Sunkara</h1>
+        <p>AI Engineer</p>
       </div>
-    );
-  }
+    </div>
+  );
+}

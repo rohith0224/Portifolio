@@ -176,6 +176,47 @@ export const experienceData: ExperienceItem[] = [
 
 export const projectData: ProjectItem[] = [
   {
+    title: "FDA Drug Safety Intelligence Agent",
+    subtitle: "Production MCP server giving Claude governed access to live FDA FAERS pharmacovigilance data",
+    stack: ["Python", "FastAPI", "MCP", "openFDA REST API", "Gemini", "Docker", "GCP Cloud Run"],
+    description:
+      "A production-grade MCP server that gives AI assistants like Claude Desktop governed access to live FDA FAERS pharmacovigilance data through four specialized tools — drug safety profiling, adverse event retrieval, drug comparison, and signal detection — covering 57,000+ real adverse event reports.",
+    bullets: [
+      "Built an LLM-as-Judge evaluation layer where Gemini independently scores Claude's responses for accuracy, hallucination, completeness, and attribution before they reach users.",
+      "Applied drug characterization filtering to isolate primary suspect drugs from concomitant medications, improving signal accuracy over naive report counting.",
+      "Debugged a production httpx URL encoding issue corrupting FDA's +AND+ query syntax by bypassing the param dict and building URL strings manually.",
+      "Replaced sentence-transformers (2GB) with fastembed (200MB), cutting Docker build time from 20 minutes to 28 seconds, and deployed serverless on GCP Cloud Run with dual stdio/HTTP transport for local and production use from a single codebase.",
+    ],
+    github: "https://github.com/rohith0224/fda-drug-safety-agent",
+  },
+  {
+    title: "RAG Notes Search – MCP Server",
+    subtitle: "Semantic search MCP tool letting Claude autonomously query a personal knowledge base",
+    stack: ["Python", "MCP", "ChromaDB", "fastembed", "sentence-transformers", "Docker", "GCP"],
+    description:
+      "A semantic search engine over personal notes exposed as an MCP tool — Claude Desktop autonomously decides when to query the knowledge base mid-conversation without hardcoded routing logic.",
+    bullets: [
+      "Built a hallucination guard threshold that returns \"no match\" instead of low-confidence results when similarity scores fall short.",
+      "Replaced sentence-transformers (PyTorch, 2GB) with fastembed (ONNX, 200MB), cutting Docker build time from 20 minutes to 28 seconds.",
+      "Used 384-dimension vector embeddings (all-MiniLM-L6-v2) with cosine similarity scoring and a configurable confidence threshold.",
+      "Debugged five production issues spanning subprocess path resolution, MCP stdout wire pollution corrupting the JSON protocol, NumPy 2.0 breaking changes, Chroma version mismatches, and conda environment conflicts.",
+    ],
+    github: "https://github.com/rohith0224/rag-mcp-server",
+  },
+  {
+    title: "ClearLine – Tax Platform Case Study",
+    subtitle: "Role-aware tax platform prototype with AI transparency and document intelligence",
+    stack: ["React", "TypeScript", "FastAPI", "PostgreSQL", "PDF Parsing", "LLM Integration"],
+    description:
+      "A full-stack tax platform prototype that reimagines the tax preparation experience with role-aware interfaces, real-time AI assistance, and document intelligence — designed to solve 10 specific UX challenges in existing tax software.",
+    bullets: [
+      "Designed 6 distinct user role interfaces (taxpayer, accountant, auditor, admin, reviewer, support), each with tailored views and permissions.",
+      "Built real-time AI guidance patterns with transparency features showing users why the AI made specific suggestions.",
+      "Implemented PDF document parsing for automatic data extraction from tax documents into form fields.",
+      "Enabled live collaboration features so multiple stakeholders can work on a case simultaneously.",
+    ],
+  },
+  {
     title: "AI Job Recommendation System",
     subtitle: "Multi-class recommendation engine with GPT-powered skill extraction",
     stack: ["Python", "Scikit-learn", "TF-IDF", "Logistic Regression", "LangChain", "GPT-4o", "Streamlit"],

@@ -14,11 +14,8 @@ import "./styles/globals.css";
 import "./styles/theme.css";
 import "./styles/sections.css";
 
-export type Suit = "iron" | "captain" | "spider";
-
 export default function App() {
   const [showIntro, setShowIntro] = useState(true);
-  const [suit, setSuit] = useState<Suit>("iron");
 
   useEffect(() => {
     const timer = window.setTimeout(() => setShowIntro(false), 2000);
@@ -26,10 +23,10 @@ export default function App() {
   }, []);
 
   return (
-    <div className={`app theme-${suit}`}>
+    <div className="app">
       {showIntro && <IntroLoader />}
 
-      <Navbar suit={suit} setSuit={setSuit} />
+      <Navbar />
 
       <main>
         <Hero />

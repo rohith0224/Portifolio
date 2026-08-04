@@ -1,41 +1,18 @@
-@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@400;500;700&display=swap");
-
 :root {
-  --bg: #07080d;
-  --card: rgba(17, 19, 26, 0.88);
-  --border: rgba(255, 255, 255, 0.08);
-  --text: rgba(255, 255, 255, 0.9);
-  --muted: rgba(255, 255, 255, 0.68);
-  --shadow: 0 22px 72px rgba(0, 0, 0, 0.6);
-}
+  --bg: #f7f8fb;
+  --card: #ffffff;
+  --border: #e4e7ec;
+  --text: #14161a;
+  --muted: #5b6472;
+  --shadow: 0 12px 32px rgba(15, 23, 42, 0.06);
 
-/* IRON MAN THEME */
-.theme-iron {
-  --accent: #ff3b3b;
-  --accent-soft: rgba(255, 60, 60, 0.2);
-  --accent-strong: #ff6b6b;
-}
-
-/* CAPTAIN AMERICA THEME */
-.theme-captain {
-  --accent: #2f80ff;
-  --accent-soft: rgba(47, 128, 255, 0.2);
-  --accent-strong: #8cb8ff;
-}
-
-/* SPIDER MAN THEME */
-.theme-spider {
-  --accent: #de0606;
---accent-soft: rgba(222, 6, 6, 0.2);
---accent-strong: #ac0202;
+  --accent: #2f5fdd;
+  --accent-strong: #1f46b3;
+  --accent-soft: rgba(47, 95, 221, 0.08);
 }
 
 .app {
-  background:
-    radial-gradient(circle at top, rgba(255, 255, 255, 0.04), transparent 28%),
-    radial-gradient(circle at 20% 20%, var(--accent-soft), transparent 28%),
-    radial-gradient(circle at 80% 30%, rgba(255, 255, 255, 0.04), transparent 22%),
-    linear-gradient(180deg, #0b0d14, #05060a);
+  background: var(--bg);
   min-height: 100vh;
   color: var(--text);
   position: relative;
@@ -46,8 +23,8 @@
 .navbar {
   position: sticky;
   top: 0;
-  background: rgba(10, 10, 14, 0.78);
-  backdrop-filter: blur(12px);
+  background: rgba(247, 248, 251, 0.85);
+  backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
   display: flex;
   justify-content: space-between;
@@ -60,82 +37,42 @@
 .navbar nav {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
   flex-wrap: wrap;
 }
 
 .navbar a {
-  margin-right: 0;
-  opacity: 0.82;
-  padding: 8px 10px;
-  border-radius: 10px;
-  transition: 0.2s ease;
-  font-family: "Orbitron", sans-serif;
-  font-size: 0.8rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+  opacity: 0.75;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: 0.15s ease;
+  font-size: 0.92rem;
+  font-weight: 500;
 }
 
 .navbar a:hover {
   color: var(--accent);
-  background: rgba(255, 255, 255, 0.04);
+  background: var(--accent-soft);
   opacity: 1;
 }
 
 .brand {
-  font-family: "Orbitron", sans-serif;
   font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  letter-spacing: -0.01em;
   color: var(--text);
   display: flex;
   align-items: center;
   gap: 10px;
+  font-size: 1.02rem;
 }
 
 .brand::before {
   content: "";
-  width: 12px;
-  height: 12px;
+  width: 9px;
+  height: 9px;
   border-radius: 999px;
   background: var(--accent);
-  box-shadow: 0 0 18px var(--accent);
   display: inline-block;
-}
-
-/* SUIT TOGGLE */
-
-.suit-toggle {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.suit-toggle button {
-  background: transparent;
-  border: 1px solid var(--border);
-  color: var(--text);
-  padding: 7px 12px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: 0.2s ease;
-  font-family: "Orbitron", sans-serif;
-  font-size: 0.76rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
-.suit-toggle button:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-  box-shadow: 0 0 12px color-mix(in srgb, var(--accent) 18%, transparent);
-}
-
-.suit-toggle button.active {
-  border-color: var(--accent);
-  color: var(--accent);
-  background: color-mix(in srgb, var(--accent) 12%, transparent);
-  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 35%, transparent);
 }
 
 /* INTRO LOADER */
@@ -143,97 +80,53 @@
 .intro {
   position: fixed;
   inset: 0;
-  background: #040509;
+  background: var(--bg);
   z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-}
-
-.intro-panels {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
-  padding: 12px;
-}
-
-.panel {
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01)),
-    linear-gradient(135deg, color-mix(in srgb, var(--accent) 12%, transparent), transparent 60%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 14px;
-  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
-  transform: translateY(110%);
-  animation: panelIn 0.7s cubic-bezier(.2,.9,.2,1) forwards, panelOut 0.52s cubic-bezier(.7,0,.2,1) forwards;
-}
-
-.panel:nth-child(1) {
-  animation-delay: 0s, 1.5s;
-}
-.panel:nth-child(2) {
-  animation-delay: 0.08s, 1.5s;
-}
-.panel:nth-child(3) {
-  animation-delay: 0.16s, 1.5s;
-}
-.panel:nth-child(4) {
-  animation-delay: 0.24s, 1.5s;
-}
-
-@keyframes panelIn {
-  to {
-    transform: translateY(0%);
-  }
-}
-
-@keyframes panelOut {
-  to {
-    transform: translateY(-120%);
-    opacity: 0;
-  }
+  animation: introFadeOut 0.5s ease forwards;
+  animation-delay: 1.5s;
 }
 
 .intro-center {
-  position: relative;
-  z-index: 2;
   text-align: center;
-  animation: introPop 0.9s ease forwards;
-}
-
-@keyframes introPop {
-  0% {
-    opacity: 0;
-    transform: translateY(14px) scale(0.98);
-  }
-  55% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-  100% {
-    opacity: 1;
-  }
+  animation: introFadeIn 0.5s ease forwards;
 }
 
 .intro-center h1 {
-  color: var(--accent);
+  color: var(--text);
   margin: 0;
-  font-family: "Bebas Neue", sans-serif;
-  font-size: clamp(3.2rem, 8vw, 5.4rem);
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  text-shadow: 0 0 20px color-mix(in srgb, var(--accent) 45%, transparent);
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: -0.01em;
 }
 
 .intro-center p {
   margin-top: 8px;
-  color: rgba(255, 255, 255, 0.75);
-  font-family: "Orbitron", sans-serif;
-  letter-spacing: 0.18em;
+  color: var(--muted);
+  letter-spacing: 0.06em;
   text-transform: uppercase;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+@keyframes introFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes introFadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
 }
 
 /* PROJECT SPOTLIGHT */
@@ -246,29 +139,24 @@
 .project-card .spot {
   position: absolute;
   inset: 0;
-  background: radial-gradient(
-    280px circle at var(--mx, 50%) var(--my, 50%),
-    color-mix(in srgb, var(--accent) 20%, white 0%),
-    transparent 55%
-  );
+  background: radial-gradient(280px circle at var(--mx, 50%) var(--my, 50%), var(--accent-soft), transparent 60%);
   opacity: 0;
   transition: opacity 0.25s ease;
   pointer-events: none;
-  mix-blend-mode: screen;
 }
 
 .project-card:hover .spot {
   opacity: 1;
 }
 
-/* INPUT FOCUS GLOW */
+/* INPUT FOCUS */
 
 input:focus,
 textarea:focus {
   outline: none;
 }
 
-/* SMALL RESPONSIVE FIXES */
+/* RESPONSIVE */
 
 @media (max-width: 900px) {
   .navbar {
@@ -279,22 +167,12 @@ textarea:focus {
 
 @media (max-width: 768px) {
   .navbar {
-    gap: 12px;
+    gap: 10px;
   }
 
   .navbar nav {
     width: 100%;
     order: 3;
     justify-content: center;
-  }
-
-  .suit-toggle {
-    width: 100%;
-    justify-content: flex-end;
-  }
-
-  .intro-panels {
-    gap: 6px;
-    padding: 8px;
   }
 }
