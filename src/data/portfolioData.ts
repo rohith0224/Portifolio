@@ -101,13 +101,13 @@ export const navItems: NavItem[] = [
 export const heroData: HeroData = {
   firstName: "Rohith",
   lastName: "Sunkara",
-  role: "AI Engineer",
+  role: "Data Scientist & AI Engineer",
   headline:
-    "I build intelligent systems using machine learning, LLMs, and modern AI technologies, and leverage full-stack development to turn advanced AI models into scalable, real-world applications.",
+    "I turn complex data into measurable outcomes—combining 5+ years in analytics and machine learning with the engineering needed to take models from prototype to production.",
   location: "Arlington, VA, USA",
   email: "rohithsunkara06@gmail.com",
   github: "https://github.com/rohith0224",
-  linkedin: "https://www.linkedin.com/in/sunkara-rohith-817288219/",
+  linkedin: "https://www.linkedin.com/in/rohithsunkara",
   primaryCta: {
     label: "Launch Projects",
     target: "projects",
@@ -118,12 +118,12 @@ export const heroData: HeroData = {
   },
   tertiaryCta: {
     label: "LinkedIn",
-    href: "https://www.linkedin.com/in/sunkara-rohith-817288219/",
+    href: "https://www.linkedin.com/in/rohithsunkara",
   },
   stats: [
-    { label: "AI Systems", value: "LLMs • RAG • Agents" },
-    { label: "Stack", value: "Python · FastAPI · React" },
-    { label: "Frontend", value: "React • TypeScript" },
+    { label: "Experience", value: "5+ years in data & ML" },
+    { label: "Modeling", value: "Forecasting · NLP · XGBoost" },
+    { label: "Delivery", value: "Production ML · Cloud · BI" },
   ],
 };
 
@@ -140,36 +140,53 @@ export const aboutData: AboutData = {
 
 export const experienceData: ExperienceItem[] = [
   {
-    company: "GlobalLogic",
-    role: "Software Engineer Trainee",
-    location: "Noida, India",
-    duration: "March 2024 – July 2024",
+    company: "Sound of Earth",
+    role: "Data Science and Systems Intern",
+    location: "United States · Remote",
+    duration: "Aug 2026 – Present · Internship",
     bullets: [
-      "Developed and maintained full-stack web applications using HTML, CSS, TypeScript, React.js, Node.js, and Express.js.",
-      "Collaborated with senior engineers on API integration, debugging, and performance optimization to improve application performance and reliability.",
-      "Applied Git version control and Agile development practices to support efficient team collaboration and timely feature delivery.",
+      "Maintain and support digital infrastructure across Notion, Supabase, and Zite, helping ensure reliability for a 15+ member cross-functional organization.",
+      "Assist with workflow automation across 5+ n8n pipelines and backend features including database builds, farmers’ market listings, and interactive map integrations.",
+      "Support data annotation, cleaning, and model training for environmental audio datasets with 10K+ labeled samples, and explore model evaluation techniques.",
+      "Develop 4+ data visualization dashboards and prototype AI-assisted analytics for unstructured environmental sensor data across 3 monitoring domains.",
+      "Contribute to 6+ GitHub repositories and collaborate with 4 department heads to configure scalable team workflows.",
     ],
   },
   {
-    company: "Yoshops.com",
-    role: "Data Science Intern",
-    location: "India",
-    duration: "May 2022 – July 2022",
+    company: "The George Washington University",
+    role: "Technical Support Assistant",
+    location: "Washington, District of Columbia, United States · On-site",
+    duration: "Oct 2024 – May 2026 · Part-time",
     bullets: [
-      "Collected and analyzed large-scale retail datasets to uncover customer behavior patterns and product demand trends.",
-      "Built machine learning models to improve demand forecasting accuracy and support personalized product recommendations.",
-      "Automated data workflows using Python, Pandas, Scikit-learn, and SQL to improve efficiency in data-driven decision-making.",
+      "Developed a Python and scikit-learn NLP classifier to triage 1,800 annual IT support requests for a 28,000-student community, reducing manual categorization by 8 technician-hours per week.",
+      "Trained a Python and pandas time-series model on 3 years of incident data to forecast monthly ticket volumes by service category, helping prevent 4 critical understaffing events each semester.",
+      "Automated workstation provisioning with PowerShell and Active Directory for 220 faculty and staff, reducing onboarding time from 3 days to 4 hours per cohort.",
     ],
   },
   {
-    company: "The Sparks Foundation",
-    role: "Data Science Intern",
+    company: "HTC Global Services",
+    role: "Data Scientist",
     location: "India",
-    duration: "March 2022 – April 2022",
+    duration: "Jan 2023 – Jul 2024 · Full-time",
     bullets: [
-      "Performed data cleaning, exploratory data analysis, and visualization using Python, Pandas, and Matplotlib to derive actionable insights.",
-      "Developed and tested supervised machine learning models for predictive analytics tasks.",
-      "Implemented data preprocessing, feature engineering, and model evaluation techniques with Scikit-learn to improve model performance.",
+      "Designed and productionized XGBoost and LightGBM models on 14 million transaction records, engineering 47 domain-specific ERP and POS features to deliver $3.2M in quarterly inventory cost savings.",
+      "Built interactive Tableau dashboards adopted by 4 cross-functional teams, consolidating 11 data products for 60 stakeholders and eliminating 3 recurring weekly reporting meetings.",
+      "Analyzed customer behavior and ran statistical hypothesis tests across 180,000 customers, identifying 6 high-value cohorts that informed campaigns and contributed to 14 contract renewals.",
+      "Deployed models through AWS SageMaker inference endpoints with S3 artifact versioning, cutting batch prediction turnaround from 48 hours to 4 hours across 3 business units.",
+      "Optimized 23 PostgreSQL and Snowflake queries, reducing report generation from 4.5 hours to 22 minutes and reclaiming 16 analyst-hours each week.",
+    ],
+  },
+  {
+    company: "Optum",
+    role: "Data Analyst",
+    location: "India",
+    duration: "Apr 2021 – Dec 2022 · Full-time",
+    bullets: [
+      "Analyzed healthcare claims, clinical encounter, and pharmacy data for 4.7 million members, supporting risk stratification and $8.5M in preventive-care investment decisions across 6 regional programs.",
+      "Contributed to readmission-risk models using logistic regression and random forests to help care teams identify 3,400 high-risk members per quarter under CMS and HEDIS guidelines.",
+      "Automated 5 monthly Python and SQL ETL workflows across 5 product lines, cutting KPI delivery from 11 days to 2 days and removing 3 manual Excel consolidation steps.",
+      "Created Power BI dashboards for HEDIS quality and cost-per-member metrics across 12 health plan types, replacing 3 legacy workbooks used by 25 senior directors while maintaining HIPAA-compliant data governance.",
+      "Supported claims ingestion with Azure Data Factory and Blob Storage, contributing to cloud migration that reduced nightly batch transfer time from 6 hours to 45 minutes.",
     ],
   },
 ];
@@ -369,6 +386,6 @@ export const researchData: ResearchItem = {
 export const contactData: ContactData = {
   email: "rohithsunkara06@gmail.com",
   github: "https://github.com/rohith0224",
-  linkedin: "https://www.linkedin.com/in/sunkara-rohith-817288219/",
+  linkedin: "https://www.linkedin.com/in/rohithsunkara",
   formNote: "Wire this form to Formspree or Resend to receive messages.",
 };

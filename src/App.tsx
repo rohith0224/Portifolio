@@ -10,6 +10,7 @@ import Education from "./components/Education";
 import Research from "./components/Research";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import InteractiveBackground from "./components/InteractiveBackground";
 import "./styles/globals.css";
 import "./styles/theme.css";
 import "./styles/sections.css";
@@ -24,6 +25,7 @@ export default function App() {
 
   return (
     <div className="app">
+      <InteractiveBackground />
       {showIntro && <IntroLoader />}
 
       <Navbar />

@@ -1,21 +1,42 @@
 :root {
-  --bg: #f7f8fb;
+  --bg: #f5f7f4;
   --card: #ffffff;
-  --border: #e4e7ec;
-  --text: #14161a;
-  --muted: #5b6472;
-  --shadow: 0 12px 32px rgba(15, 23, 42, 0.06);
+  --border: #e1e8e2;
+  --text: #14221d;
+  --muted: #66756e;
+  --shadow: 0 16px 42px rgba(24, 48, 37, 0.07);
 
-  --accent: #2f5fdd;
-  --accent-strong: #1f46b3;
-  --accent-soft: rgba(47, 95, 221, 0.08);
+  --accent: #16805f;
+  --accent-strong: #0d6248;
+  --accent-soft: rgba(22, 128, 95, 0.09);
+  --hero-bg: #10251f;
+  --hero-ink: #f5fbf6;
+  --hero-muted: #b2c6ba;
 }
 
 .app {
-  background: var(--bg);
+  background:
+    radial-gradient(ellipse at 12% 18%, rgba(216, 235, 218, 0.33), transparent 28rem),
+    var(--bg);
   min-height: 100vh;
   color: var(--text);
   position: relative;
+}
+
+.interactive-background {
+  position: fixed;
+  z-index: 0;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+.interactive-background--hero {
+  position: absolute;
+  z-index: 0;
+  border-radius: inherit;
 }
 
 /* NAVBAR */
@@ -23,9 +44,9 @@
 .navbar {
   position: sticky;
   top: 0;
-  background: rgba(247, 248, 251, 0.85);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border);
+  background: rgba(245, 247, 244, 0.88);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(225, 232, 226, 0.86);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -43,10 +64,10 @@
 
 .navbar a {
   opacity: 0.75;
-  padding: 8px 12px;
-  border-radius: 8px;
+  padding: 8px 10px;
+  border-radius: 999px;
   transition: 0.15s ease;
-  font-size: 0.92rem;
+  font-size: 0.84rem;
   font-weight: 500;
 }
 
@@ -63,16 +84,23 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 1.02rem;
+  font-size: 0.96rem;
 }
 
 .brand::before {
   content: "";
-  width: 9px;
-  height: 9px;
-  border-radius: 999px;
+  width: 26px;
+  height: 26px;
+  border-radius: 9px;
   background: var(--accent);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.22), 0 4px 12px rgba(22, 128, 95, 0.18);
   display: inline-block;
+  content: "R";
+  color: #fff;
+  font-size: 0.74rem;
+  line-height: 26px;
+  text-align: center;
+  font-weight: 800;
 }
 
 /* INTRO LOADER */
@@ -173,6 +201,25 @@ textarea:focus {
   .navbar nav {
     width: 100%;
     order: 3;
-    justify-content: center;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scrollbar-width: none;
+    padding-bottom: 2px;
+  }
+
+  .navbar nav::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
